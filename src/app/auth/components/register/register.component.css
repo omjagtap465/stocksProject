@@ -1,0 +1,76 @@
+.register-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.form {
+    position: relative;
+    background: #FFFFFF;
+    max-width: 30rem;
+    margin: 0 auto 100px;
+    height: 30rem;
+
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.logo {
+    position: absolute;
+    left: 45%;
+    right: 45%;
+    top: 1rem;
+}
+
+form {
+    padding: 5rem 2.8rem 2.8rem 2.8rem;
+}
+
+.form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    
+    background: var(--c-border-primary);
+    width: 100%;
+    border: 0;
+    margin: 1rem 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form button {
+    font-family: "Roboto", sans-serif;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    outline: 0;
+    background: var(--c-accent-primary);
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.form button:hover,
+.form button:active,
+.form button:focus {
+    background: var(--c-accent-primary);
+}
+
+.form .message {
+    margin: 15px 0 0;
+    color: #8f8c8c;
+    font-size: 12px;
+}
+
+.form .message a {
+    color: var(--c-accent-primary);
+    text-decoration: none;
+}
+.register-form li {
+    color: red;
+}

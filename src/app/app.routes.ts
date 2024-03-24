@@ -1,3 +1,13 @@
-import { Routes } from '@angular/router';
+import { Route } from '@angular/router';
 
-export const routes: Routes = [];
+export const approutes: Route[] = [
+  {
+    path: 'login',
+    loadChildren: () => import('./auth/auth.routes').then((m) => m.loginRoutes),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./auth/auth.routes').then((m) => m.registerRoutes),
+  },
+];
