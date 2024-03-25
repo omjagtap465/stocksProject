@@ -9,7 +9,8 @@
                 <img src="https://assets.codepen.io/285131/untitled-ui.svg" />
             </a>
         </div>
-        <div class="header-navigation">
+        <ng-container *ngIf="data$ | async as data">
+        <div class="header-navigation" *ngIf="!(data.currentUser)">
             <nav class="header-navigation-links">
                 <a href="#"> Home </a>
                 <a href="#"> Dashboard </a>
@@ -26,12 +27,16 @@
                 </a>
             </div>
         </div>
-        <a class="button" [ngClass]="isMenuOpen ? 'change' : ''" (click)="toggleMenu()">
+
+    </ng-container>
+            <ng-container *ngIf="data$ | async as data">
+               
+        <a class="button" [ngClass]="isMenuOpen ? 'change' : ''" (click)="toggleMenu()" *ngIf="!(data.currentUser)">
             <span class="bar1"></span>
             <span class="bar2"></span>
             <span class="bar3"></span>
         </a>
-
+            </ng-container>
     </div>
 </header>
 <div id="menu" *ngIf="isMenuOpen" class="navbar-menu ">
@@ -49,3 +54,4 @@
 
     </ul>
 </div>
+ 

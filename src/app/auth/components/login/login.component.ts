@@ -3,23 +3,26 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { LoginRequestInterface } from '../../types/loginRequest.interface';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
+import { RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { authActions } from '../../store/action';
+import { combineLatest } from 'rxjs';
+import { selectCurrentUser } from '../../store/reducer';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'st-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink, CommonModule],
 })
 export class LoginComponent {
   form = this.formBuilder.group({
-    username: ['', Validators.required],
+    username: ['omkar@gmail.com', Validators.required],
     password: ['', Validators.required],
   });
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private authService: AuthService
-  ) {}
+  constructor(private formBuilder: FormBuilder, private store: Store) {}
 
   onLogin() {
     console.log(this.form.value);
@@ -27,12 +30,6 @@ export class LoginComponent {
       email: this.form.value.username || ' ',
       password: this.form.value.password || ' ',
     };
-    this.authService
-      .login(loginRequestUser)
-      .subscribe((data) => console.log(data));
+    this.store.dispatch(authActions.login({ request: loginRequestUser }));
   }
 }
-//  Creating store
-// local Storage Get Set Service
-// Then Creating Loader
-//  routing after Login

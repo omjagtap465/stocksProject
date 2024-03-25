@@ -10,4 +10,11 @@ export const approutes: Route[] = [
     loadChildren: () =>
       import('./auth/auth.routes').then((m) => m.registerRoutes),
   },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./shared/dashboard/dashboard.routes').then(
+        (m) => m.dashboardRoutes
+      ),
+  },
 ];

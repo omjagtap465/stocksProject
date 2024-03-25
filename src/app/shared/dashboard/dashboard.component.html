@@ -1,0 +1,19 @@
+<div class="dashboard">
+    <div>
+        <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-search" />
+            <input type="text" pInputText placeholder="Search" (click)="onSearch()" />
+        </p-iconField>
+        <ng-container *ngIf="resp$ |async as data">
+            <div *ngFor="let stocks of data" class="stock">
+                {{stocks.ticker}}
+                {{stocks.name | slice:0:10}}
+                {{stocks.currency_name}}
+                <button (click)="addStock()">+</button>
+            </div>
+        </ng-container>
+    </div>
+    <div class="card flex justify-content-center">
+        <p-button label="AddWatchlist"></p-button>
+    </div>
+</div>
