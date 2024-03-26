@@ -1,0 +1,5 @@
+<div class="watchlist" *ngFor="let item of watchlistData">
+    <button (click)="selectWatchlistId(item.id)">{{ item.id }}</button>
+    <p>{{ item.watchlist_name }}</p>
+</div>
+

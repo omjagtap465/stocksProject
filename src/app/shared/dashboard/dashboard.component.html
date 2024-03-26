@@ -9,11 +9,16 @@
                 {{stocks.ticker}}
                 {{stocks.name | slice:0:10}}
                 {{stocks.currency_name}}
-                <button (click)="addStock()">+</button>
+                <button (click)="addStock(stocks)">+</button>
             </div>
         </ng-container>
     </div>
-    <div class="card flex justify-content-center">
-        <p-button label="AddWatchlist"></p-button>
+
+    <st-watchlistnumber (selectedWatchlistId)="watchlistNumber($event)">
+
+    </st-watchlistnumber>
+    <div class="watchlist-stocks">
+        <st-watchliststocks [watchlistNumber]="watchlistId" ></st-watchliststocks>
     </div>
 </div>
+  

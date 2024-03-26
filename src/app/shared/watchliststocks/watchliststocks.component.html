@@ -1,0 +1,6 @@
+<ng-container *ngIf="data$|async as data">
+<p *ngFor="let stocks of data.stocks">
+    {{stocks.id}}
+    {{stocks.ticker}}
+</p>
+</ng-container>

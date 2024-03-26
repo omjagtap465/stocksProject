@@ -14,6 +14,14 @@ import {
 } from './auth/store/effect';
 import { authFeatureKey, authReducer } from './auth/store/reducer';
 import { authInterceptor } from './shared/service/auth.interceptor';
+import {
+  getWatchlistStocksEffects,
+  addStockToWatchlistEffects,
+} from './shared/watchliststocks/store/effects';
+import {
+  watchlistStockFeatureKey,
+  watchlistStockReducer,
+} from './shared/watchliststocks/store/reducer';
 export const appConfig: ApplicationConfig = {
   providers: [
     // provideHttpClient(withInterceptors([authInterceptor])),
@@ -25,8 +33,10 @@ export const appConfig: ApplicationConfig = {
 
     provideEffects({ loginEffects, redirectAfterLoginEffect }),
     provideEffects({ getCurrentUserEffect, redirectCurrentUserEffect }),
+    provideEffects({ getWatchlistStocksEffects, addStockToWatchlistEffects }),
     provideRouterStore(),
     provideHttpClient(),
     provideState(authFeatureKey, authReducer),
+    provideState(watchlistStockFeatureKey, watchlistStockReducer),
   ],
 };

@@ -6,3 +6,6 @@ font-size: 10px;
 .dashboard{
     display: flex;
 }
+.watchlist-stocks{
+    margin-left: 10rem;
+}
