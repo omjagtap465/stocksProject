@@ -2,7 +2,7 @@
     <div>
         <p-iconField iconPosition="left">
             <p-inputIcon styleClass="pi pi-search" />
-            <input type="text" pInputText placeholder="Search" (click)="onSearch()" />
+    <input type="text" [ngModel]='text' (ngModelChange)='onChange($event)' (click)="onSearch()" />
         </p-iconField>
         <ng-container *ngIf="resp$ |async as data">
             <div *ngFor="let stocks of data" class="stock">
@@ -13,12 +13,11 @@
             </div>
         </ng-container>
     </div>
-
     <st-watchlistnumber (selectedWatchlistId)="watchlistNumber($event)">
 
     </st-watchlistnumber>
     <div class="watchlist-stocks">
-        <st-watchliststocks [watchlistNumber]="watchlistId" ></st-watchliststocks>
+        <st-watchliststocks [watchlistNumber]="watchlistId"></st-watchliststocks>
     </div>
 </div>
-  
+{{count()}}

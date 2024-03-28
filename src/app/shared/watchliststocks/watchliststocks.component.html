@@ -2,5 +2,6 @@
 <p *ngFor="let stocks of data.stocks">
     {{stocks.id}}
     {{stocks.ticker}}
+    <button (click)="deleteStock(stocks.id)">-</button>
 </p>
 </ng-container>

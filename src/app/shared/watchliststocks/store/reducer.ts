@@ -7,6 +7,7 @@ import { WatchlistStockStateInterface } from '../types/watchlistStockState.inter
 import { watchlistStocksActions } from './action';
 const initialState: WatchlistStockStateInterface = {
   stocks: null,
+  isSubmitting: false,
 };
 const watchlistStockFeature = createFeature({
   name: 'watchliststock',
@@ -26,15 +27,30 @@ const watchlistStockFeature = createFeature({
     on(watchlistStocksActions.addStock, (state) => ({
       ...state,
     })),
-    // on(watchlistStocksActions.addStockSuccess, (state, action) => {
-    //   const stocks = state.stocks;
-    //   return {
-    //     ...state,
-    //     isSubmitting: false,
-    //     stocks: [...stocks, action.stock],
-    //   };
-    // }),
-    on(watchlistStocksActions.addStockFailure, (state, action) => ({
+    on(watchlistStocksActions.addStockSuccess, (state, action) => {
+      const existingStocks = state.stocks;
+      return {
+        ...state,
+        isSubmitting: false,
+        stocks: existingStocks
+          ? [...existingStocks, action.stock]
+          : [action.stock],
+      };
+    }),
+    on(watchlistStocksActions.deleteStock, (state) => ({
+      ...state,
+    })),
+    on(watchlistStocksActions.deleteStockSuccess, (state, action) => {
+      const existingStocks = state.stocks?.filter(
+        (stock) => stock.id != action.id
+      );
+      return {
+        ...state,
+        isSubmitting: false,
+        stocks: existingStocks,
+      };
+    }),
+    on(watchlistStocksActions.deleteStockFailure, (state, action) => ({
       ...state,
     }))
   ),

@@ -1,3 +1,5 @@
+import { WatchlistStock } from './watchlistStocks.interface';
+
 export interface AddStockWatchlist {
   ticker: string;
   name: string;
@@ -6,13 +8,21 @@ export interface AddStockWatchlist {
   active: boolean;
   cik: number;
   is_deleted: boolean;
-  sequence_no: string;
+  watchlist_id: number;
+}
+export interface AddStock {
+  ticker: string;
+  name: string;
+  market: string;
+  primary_exchange: string;
+  active: boolean;
+  cik: string;
   watchlist_id: number;
 }
 
 export interface AddStockWatchlistStockResponse {
   statusCode: number;
-  data: AddStockWatchlist;
+  data: WatchlistStock;
   message: string;
   success: boolean;
 }

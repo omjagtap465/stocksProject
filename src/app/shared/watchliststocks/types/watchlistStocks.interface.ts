@@ -7,7 +7,6 @@ export interface WatchlistStock {
   active: boolean;
   cik: number;
   is_deleted: boolean;
-  sequence_no: string;
   watchlist_id: number;
   createdAt: string;
   updatedAt: string;

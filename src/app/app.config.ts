@@ -17,6 +17,7 @@ import { authInterceptor } from './shared/service/auth.interceptor';
 import {
   getWatchlistStocksEffects,
   addStockToWatchlistEffects,
+  deleteStocksFromWatchlistEffects,
 } from './shared/watchliststocks/store/effects';
 import {
   watchlistStockFeatureKey,
@@ -33,7 +34,11 @@ export const appConfig: ApplicationConfig = {
 
     provideEffects({ loginEffects, redirectAfterLoginEffect }),
     provideEffects({ getCurrentUserEffect, redirectCurrentUserEffect }),
-    provideEffects({ getWatchlistStocksEffects, addStockToWatchlistEffects }),
+    provideEffects({
+      getWatchlistStocksEffects,
+      addStockToWatchlistEffects,
+      deleteStocksFromWatchlistEffects,
+    }),
     provideRouterStore(),
     provideHttpClient(),
     provideState(authFeatureKey, authReducer),

@@ -40,13 +40,36 @@ export const addStockToWatchlistEffects = createEffect(
       ofType(watchlistStocksActions.addStock),
       switchMap(({ stock }) => {
         return watchlistStocksService.addStockToWatchlist(stock).pipe(
-          map((addStockWatchlist: AddStockWatchlist) => {
+          map((addStockWatchlist: WatchlistStock) => {
             return watchlistStocksActions.addStockSuccess({
               stock: addStockWatchlist,
             });
           }),
           catchError(() => {
             return of(watchlistStocksActions.addStockFailure());
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);
+export const deleteStocksFromWatchlistEffects = createEffect(
+  (
+    actions$ = inject(Actions),
+    watchlistStocksService = inject(WatchlistStocksService)
+  ) => {
+    return actions$.pipe(
+      ofType(watchlistStocksActions.deleteStock),
+      switchMap(({ id }) => {
+        return watchlistStocksService.deleteStockFromWatchlist(id).pipe(
+          map(() => {
+            return watchlistStocksActions.deleteStockSuccess({
+              id: id,
+            });
+          }),
+          catchError(() => {
+            return of(watchlistStocksActions.deleteStockFailure());
           })
         );
       })
